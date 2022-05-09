@@ -1,0 +1,24 @@
+{
+	"name": "dev_setup",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"browsersync": "browser-sync start --proxy 'local.bigcity2.com' --files 'css/*.css' 'js/*.js' './*.php' 'woocommerce/*.php' 'includes/*.php'",
+		"watch:sass": "onchange 'scss/*.scss' './*.php' -- npm run sass",
+		"sass": "node-sass --include-path scss scss/main.scss css/main.css --output-style compact && npm run autoprefix",
+		"autoprefix": "postcss --use autoprefixer -b 'last 5 versions' css/main.css -d css",
+		"dev": "parallelshell 'npm run browsersync' 'npm run watch:sass'"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^9.8.6",
+		"browser-sync": "^2.26.12",
+		"node-sass": "^4.14.1",
+		"onchange": "^3.2.1",
+		"postcss": "^7.0.32",
+		"postcss-cli": "^7.1.1",
+		"parallelshell": "3.0.1"
+	}
+}
